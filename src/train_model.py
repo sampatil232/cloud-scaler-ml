@@ -62,6 +62,6 @@ for name, model in models.items():
 rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
 rf_model.fit(X_train, y_train)
 
-joblib.dump(rf_model, "../models/random_forest.pkl")
+joblib.dump(rf_model, "../models/random_forest.pkl", compress = 3)
 
 print("\nModel saved successfully!")
