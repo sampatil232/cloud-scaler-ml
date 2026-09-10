@@ -1,12 +1,13 @@
 # Dataset
 data/data.csv
 
-# Trained models
-models/
+# Ignore all models
+models/*
 
-# Python cache
+# But keep the trained model
+!models/random_forest.pkl
+
+# Python
 __pycache__/
 *.pyc
-
-# Virtual environment
 venv/

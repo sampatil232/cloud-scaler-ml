@@ -12,21 +12,22 @@ st.title("☁️ Predictive Cloud Resource Auto-Scaling")
 st.write("Enter the current cloud resource values to predict CPU utilization.")
 
 # User Inputs
-avg_memory = st.slider("Average Memory Usage", 0.0, 1.0, 0.05, 0.01)
-max_cpu = st.slider("Maximum CPU Usage", 0.0, 1.0, 0.10, 0.01)
-max_memory = st.slider("Maximum Memory Usage", 0.0, 1.0, 0.08, 0.01)
-assigned_memory = st.slider("Assigned Memory", 0.0, 1.0, 0.10, 0.01)
+avg_memory = st.slider("Average Memory Usage", 0, 100, 65)
+max_cpu = st.slider("Maximum CPU Usage", 0, 100 , 98)
+max_memory = st.slider("Maximum Memory Usage", 0, 100 , 65)
+assigned_memory = st.slider("Assigned Memory", 0, 100, 98)
 failed = st.selectbox("Task Failed", [0, 1])
+
 
 if st.button("Predict CPU Utilization"):
 
     sample = pd.DataFrame({
-        "avg_memory": [avg_memory],
-        "max_cpu": [max_cpu],
-        "max_memory": [max_memory],
-        "assigned_memory": [assigned_memory],
-        "failed": [failed]
-    })
+    "avg_memory": [avg_memory / 100],
+    "max_cpu": [max_cpu / 100],
+    "max_memory": [max_memory / 100],
+    "assigned_memory": [assigned_memory / 100],
+    "failed": [failed]
+})
 
     prediction = model.predict(sample)[0]
     cpu_percent = prediction * 100
