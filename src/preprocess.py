@@ -13,10 +13,12 @@ X = df[[
 ]]
 
 # Target
-y = df["avg_cpu"]
+# preprocess.py
+y = df["avg_cpu"] / df["avg_cpu"].max()
 
 # Save processed data
 X.to_csv("../data/X.csv", index=False)
 y.to_csv("../data/y.csv", index=False)
 
 print("Preprocessing completed!")
+
