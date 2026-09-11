@@ -23,6 +23,9 @@ data = data.dropna()
 X = data.drop("avg_cpu", axis=1)
 y = data["avg_cpu"]
 
+print("Target statistics:")
+print(y.describe())
+
 print(X.isnull().sum())
 
 
