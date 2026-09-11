@@ -25,7 +25,12 @@ avg_memory = st.slider("Average Memory Usage", 0, 100, 65)
 max_cpu = st.slider("Maximum CPU Usage", 0, 100 , 98)
 max_memory = st.slider("Maximum Memory Usage", 0, 100 , 65)
 assigned_memory = st.slider("Assigned Memory", 0, 100, 98)
-failed = st.selectbox("Task Failed", [0, 1])
+failed = st.selectbox(
+    "Previous Task Status",
+    ["Successful", "Failed"]
+)
+
+failed = 0 if failed == "Successful" else 1
 
 
 if st.button("Predict CPU Utilization"):
