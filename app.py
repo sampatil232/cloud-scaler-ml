@@ -55,7 +55,7 @@ if st.button("Predict CPU Utilization"):
 
     if cpu_percent >= 70:
         st.error("🔴 Scale Up: Add more virtual machines")
-    elif cpu_percent >= 35:
-        st.info("🟡 Maintain: Keep Current Resources")
+    elif cpu_percent >= 40:
+        st.info("🟡 Maintain: Keep current resources")
     else:
         st.success("🟢 Scale Down: Reduce unused resources")
