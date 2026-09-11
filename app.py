@@ -11,14 +11,18 @@ st.title("☁️ Predictive Cloud Resource Auto-Scaling")
 
 st.write("Enter the current cloud resource values to predict CPU utilization.")
 
-st.info("""
-Enter the current cloud server resource usage (0–100%).
+st.markdown("### Resource Usage Reference")
 
-• Average Memory: Current average RAM usage
-• Maximum CPU: Peak CPU usage observed
-• Maximum Memory: Peak RAM usage observed
-• Assigned Memory: Memory allocated to the VM
-""")
+st.table(pd.DataFrame({
+    "Workload": ["🟢 Low / Idle", "🟡 Normal", "🔴 High / Peak"],
+    "Suggested Values": [
+        "10–30% CPU & Memory",
+        "31–70% CPU & Memory",
+        "71–100% CPU & Memory"
+    ]
+}))
+
+st.caption("Example: Heavy traffic → use values around 85–95%.")
 
 # User Inputs
 avg_memory = st.slider("Average Memory Usage", 0, 100, 65)
